@@ -6,7 +6,8 @@
 	</head>
 	<body>
 		<header>
-			<h1>Edit <%=eventVolunteer.name%> <%=event.title%> Event</h1>
+			<h1>Edit Event</h1>
+			<h2><%=eventVolunteer.name%> <u>'<%=event.title%>'</u> Event</h2>
 			<nav>
 				<ul>
 					<li>
@@ -33,10 +34,10 @@
 						</option>
                     <% } %>
                 </select><br/>
-				<input type="text" name="title" value="<%=event.title%>"/><br/>
-				<textarea name="body"><%=event.body%></textarea><br/>
-				<input type="submit" value="Update Article"/>
-			</form>
+				Date:<input type="date" name="date"><br/>
+				Time: <input type="time" name="time" value="<%event.time%>"><br/>
+				<input type="submit" value="Update Event"/>
+				</form>
 		</main>
 	</body>
 </html>

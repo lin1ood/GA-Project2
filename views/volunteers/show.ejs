@@ -33,7 +33,7 @@
 				<% if (volunteer.events.length === 0) { %>
 						<h2>Member has no Event Commitments</h2><br/>
 				<% } else { %>
-					<ul>
+					<ol>
 						<% for(let i = 0; i < volunteer.events.length; i++) { %>
 							<li><%=volunteer.events[i].title%></li>
 							<ul>
@@ -41,7 +41,7 @@
 								<li><%=volunteer.events[i].time%></li>
 							</ul>
 						<% } %>
-					</ul>
+					</ol>
 				<% } %>
 			</section>
 			<section>
