@@ -26,7 +26,7 @@ app.get('/', (req, res)=>{
 	res.render('index.ejs');
 });
 
-const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/vounteer';
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/volunteer';
 mongoose.connect(mongoUri);
 
 mongoose.connection.once('open', ()=>{

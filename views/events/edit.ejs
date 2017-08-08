@@ -2,39 +2,39 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title></title>
+		<title>Event Edit</title>
 	</head>
 	<body>
 		<header>
-			<h1>Edit <%=article.title%>'s Info</h1>
+			<h1>Edit <%=eventVolunteer.name%> <%=event.title%> Event</h1>
 			<nav>
 				<ul>
 					<li>
 						<a href="/">Home</a>
 					</li>
 					<li>
-						<a href="/articles">Articles Index</a>
+						<a href="/events">Events Index</a>
 					</li>
 				</ul>
 			</nav>
 		</header>
 		<main>
 			<h2>Article Attributes:</h2>
-			<form action="/articles/<%=article._id%>?_method=PUT" method="post">
-				<select name="authorId">
-                    <% for(let i = 0; i < authors.length; i++) { %>
+			<form action="/events/<%=event._id%>?_method=PUT" method="post">
+				<select name="volunteerId">
+                    <% for(let i = 0; i < volunteers.length; i++) { %>
                         <option
-							value="<%=authors[i]._id%>"
-							<% if(authors[i]._id.toString() === articleAuthor._id.toString()){ %>
+							value="<%=volunteers[i]._id%>"
+							<% if(volunteers[i]._id.toString() === eventVolunteer._id.toString()){ %>
 								selected
 							<% } %>
 							>
-							<%=authors[i].name%>
+							<%=volunteers[i].name%>
 						</option>
                     <% } %>
                 </select><br/>
-				<input type="text" name="title" value="<%=article.title%>"/><br/>
-				<textarea name="body"><%=article.body%></textarea><br/>
+				<input type="text" name="title" value="<%=event.title%>"/><br/>
+				<textarea name="body"><%=event.body%></textarea><br/>
 				<input type="submit" value="Update Article"/>
 			</form>
 		</main>

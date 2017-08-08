@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const dateFormat = require('dateformat');
 const Event = require('../models/events.js');
 const Volunteer = require('../models/volunteer.js')
 
@@ -8,9 +9,13 @@ router.get('/', (req, res)=>{
 		res.redirect('/sessions/login');
 	};
 	Event.find({}, (err, foundEvents)=>{
-		res.render('events/index.ejs', {
-			events: foundEvents
-		});
+		if (err) {
+			res.send('There are currently no Events');
+		} else {
+			res.render('events/index.ejs', {
+				events: foundEvents
+			});
+		}
 	})
 });
 
@@ -23,6 +28,7 @@ router.get('/new', (req, res)=>{
 });
 
 router.post('/', (req, res)=>{
+	console.log(req.body);
     Volunteer.findById(req.body.volunteerId, (err, foundVolunteer)=>{
         Event.create(req.body, (err, createdEvent)=>{
             foundVolunteer.events.push(createdEvent);
@@ -38,7 +44,7 @@ router.get('/:id', (req, res)=>{
         Volunteer.findOne({'events._id':req.params.id}, (err, foundVolunteer)=>{
             res.render('events/show.ejs', {
                 volunteer:foundVolunteer,
-                Event: foundEvent
+                event: foundEvent
             });
         })
     });
@@ -60,7 +66,7 @@ router.get('/:id/edit', (req, res)=>{
 		Volunteer.find({}, (err, allVolunteers)=>{
 			Volunteer.findOne({'events._id':req.params.id}, (err, foundEventVolunteer)=>{
 				res.render('events/edit.ejs', {
-					Event: foundEvent,
+					event: foundEvent,
 					volunteers: allVolunteers,
 					eventVolunteer: foundEventVolunteer
 				});

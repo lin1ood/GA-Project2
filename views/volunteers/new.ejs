@@ -21,8 +21,10 @@
 		<main>
 			<form action="/volunteers" method="post">
 				Name:<input type="text" name="name" /><br/>
-				email:<input type="text" name="email" /><br/>
-				memberID:<input type="text" name="memberID" /><br/>
+				<!-- todo: add to the ejs post processing -->
+				Cell:<input type="tel" name="cell" /><br/>
+				Email:<input type="email" name="email" /><br/>
+				MemberID:<input type="text" name="memberID" /><br/>
 				<input type="submit" value="Add Volunteer"/>
 			</form>
 		</main>

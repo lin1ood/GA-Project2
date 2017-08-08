@@ -23,6 +23,7 @@
 				<h2>Volunteer Info:</h2>
 				<ul>
 					<li>Name: <%=volunteer.name%></li>
+					<li>Cell: <%=volunteer.cell%></li>
 					<li>email: <%=volunteer.email%></li>
 					<li>MemberID: <%=volunteer.memberID%></li>
 				</ul>
@@ -35,8 +36,10 @@
 					<ul>
 						<% for(let i = 0; i < volunteer.events.length; i++) { %>
 							<li><%=volunteer.events[i].title%></li>
-							<li><%=volunteer.events[i].date%></li>
-							<li><%=volunteer.events[i].time%></li>
+							<ul>
+								<li><%=volunteer.events[i].date.toLocaleDateString()%></li>
+								<li><%=volunteer.events[i].time%></li>
+							</ul>
 						<% } %>
 					</ul>
 				<% } %>
@@ -46,7 +49,7 @@
 			</section>
             <section>
 				<form action="/volunteers/<%=volunteer._id%>?_method=DELETE" method="post">
-					<input type="submit" value="Delete Event"/>
+					<input type="submit" value="Delete Volunteer"/>
 				</form>
 			</section>
 		</main>

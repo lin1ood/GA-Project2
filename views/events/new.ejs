@@ -3,14 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<title>New Event</title>
-		<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<header>
 			<h1>Create an Event</h1>
+
 			<nav>
 				<ul>
 					<li>
@@ -24,18 +21,20 @@
 		</header>
 		<main>
 			<form action="/events" method="post">
-				<select name="volunteerId">
-                    <% for(let i = 0; i < volunteers.length; i++) { %>
-                        <option value="<%=volunteers[i]._id%>"><%=volunteers[i].name%></option>
-                    <% } %>
-                </select><br/><br/>
-								<script type="text/javascript">
-									onclick="javascript:NewCssCal ('demo1','MMddyyyy','dropdown',true,'12')"
-								</script>
-
+				Title:<input type="text" name="title" /><br/>
+				Date:<input type="date" name="date"><br/>
+				Time: <input type="time" name="time"><br/>
+				<!-- todo: only it this is the Admin -->
+					<% if (volunteers.length > 0) { %>
+						<br/>Volunteers:<br/>
+						<select name="volunteerId">
+	                    <% for(let i = 0; i < volunteers.length; i++) { %>
+	                        <option value="<%=volunteers[i]._id%>"><%=volunteers[i].name%></option>
+	                    <% } %>
+	                </select><br/><br/>
+					<% } %>
 				<input type="submit" value="Publish Event"/>
 			</form>
 		</main>
-		<script type="text/javascript" src='JQuery/dateTime.js'></script>
 	</body>
 </html>

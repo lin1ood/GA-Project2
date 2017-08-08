@@ -21,6 +21,9 @@
 		<main>
 			<h2>List of Volunteers</h2>
 			<ul>
+				<% if (volunteers.length === 0) { %>
+					<h3>No Registered Volunteers.</h3>
+				<% } %>
 				<% for(let i = 0; i < volunteers.length; i++){ %>
 					<li>
 						<a href="/volunteers/<%=volunteers[i]._id%>"><%=volunteers[i].name%></a>
