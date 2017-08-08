@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<header>
+			<h1>Show Page for <%=volunteer.name%></h1>
+			<nav>
+				<ul>
+					<li>
+						<a href="/">Home</a>
+					</li>
+					<li>
+						<a href="/volunteers">Volunteer Index</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<section>
+				<h2>Volunteer Info:</h2>
+				<ul>
+					<li>Name: <%=volunteer.name%></li>
+					<li>email: <%=volunteer.email%></li>
+					<li>MemberID: <%=volunteer.memberID%></li>
+				</ul>
+			</section>
+			<section>
+				<h2>Event Commitments:</h2>
+				<% if (volunteer.events.length === 0) { %>
+						<h2>Member has no Event Commitments</h2><br/>
+				<% } else { %>
+					<ul>
+						<% for(let i = 0; i < volunteer.events.length; i++) { %>
+							<li><%=volunteer.events[i].title%></li>
+							<li><%=volunteer.events[i].date%></li>
+							<li><%=volunteer.events[i].time%></li>
+						<% } %>
+					</ul>
+				<% } %>
+			</section>
+			<section>
+				<a href="/volunteers/<%=volunteer._id%>/edit">Edit Volunteer</a>
+			</section>
+            <section>
+				<form action="/volunteers/<%=volunteer._id%>?_method=DELETE" method="post">
+					<input type="submit" value="Delete Event"/>
+				</form>
+			</section>
+		</main>
+	</body>
+</html>

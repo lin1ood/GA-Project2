@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<header>
+			<h1>Create a Voluenteer</h1>
+			<nav>
+				<ul>
+					<li>
+						<a href="/">Home</a>
+					</li>
+					<li>
+						<a href="/volunteers">Volunteers Index</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<form action="/volunteers" method="post">
+				Name:<input type="text" name="name" /><br/>
+				email:<input type="text" name="email" /><br/>
+				memberID:<input type="text" name="memberID" /><br/>
+				<input type="submit" value="Add Volunteer"/>
+			</form>
+		</main>
+	</body>
+</html>

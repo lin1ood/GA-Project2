@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<header>
+			<h1>Events</h1>
+			<nav>
+				<ul>
+					<li>
+						<a href="/">Home</a>
+					</li>
+					<li>
+						<!-- check for admin user logged only -->
+						<a href="/events/new">Create an Event</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<h2>List of Events</h2>
+			<ul>
+				<% for(let i = 0; i < events.length; i++){ %>
+					<li>
+						<a href="/events/<%=events[i]._id%>"><%=events[i].title%></a>
+					</li>
+				<% } %>
+			</ul>
+		</main>
+	</body>
+</html>
