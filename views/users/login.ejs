@@ -8,14 +8,14 @@
   <body>
     <h2>User Login</h2>
     <p>You must have previously registered yourself as a User.</p>
-    <a href="/sessions/register">Register as a User</a>
+    <a class="center" href="/sessions/register">Register as a User</a>
     <br>
     <br>
     <br>
-    <form action=/sessions/login method="POST"/>
-       Username:<input type="text" name="username" value=""><br/>
-       Password:<input type="password" name="password" value=""><br/>
-       <button>Login</button>
+    <form class="row column" action=/sessions/login method="POST"/>
+       <label>Username:</label><input type="text" name="username" value=""><br/>
+       <label>Password:</label><input type="password" name="password" value=""><br/>
+       <button class="button-primary  submit-button">Login</button>
     </form>
     <%=message%>
     <a href="/sessions/register"></a>

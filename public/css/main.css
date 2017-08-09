@@ -21,7 +21,6 @@ input {
   float: left;
 }
 
-
 h1 {
   display: inline-block;
   color: #ADEAED;
@@ -129,7 +128,10 @@ p {
 
 }*/
 
-.submit-button {
+
+
+.submit-button, .center, p {
+  display: block;
   clear: both;
   margin-left: 300px;
 }

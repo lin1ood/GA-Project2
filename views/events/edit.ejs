@@ -23,7 +23,7 @@
 		<main>
 			<h2>Article Attributes:</h2>
 			<form action="/events/<%=event._id%>?_method=PUT" method="post">
-				<select name="volunteerId">
+				<label>Volunteer:</label><select name="volunteerId">
                     <% for(let i = 0; i < volunteers.length; i++) { %>
                         <option
 							value="<%=volunteers[i]._id%>"
@@ -35,9 +35,9 @@
 						</option>
                     <% } %>
                 </select><br/>
-				Date:<input type="date" name="date"><br/>
-				Time: <input type="time" name="time" value="<%event.time%>"><br/>
-				<input type="submit" value="Update Event"/>
+				<label>Date:</label><input type="date" name="date" value="<%=event.date%>"><br/>
+				<label>Time:</label><input type="time" name="time" value="<%event.time%>"><br/>
+				<input class="button-primary submit-button" type="submit" value="Update Event"/>
 				</form>
 		</main>
 		<% include ../partials/footer.ejs %>

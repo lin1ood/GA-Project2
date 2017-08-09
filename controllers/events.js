@@ -12,6 +12,13 @@ router.get('/', (req, res)=>{
 		if (err) {
 			res.send('There are currently no Events');
 		} else {
+			// for ( let i = 0; i < foundEvents.length; i++ ) {
+			// 	find()
+			// }
+
+
+
+
 			res.render('events/index.ejs', {
 				events: foundEvents
 			});
@@ -28,7 +35,6 @@ router.get('/new', (req, res)=>{
 });
 
 router.post('/', (req, res)=>{
-	console.log(req.body);
     Volunteer.findById(req.body.volunteerId, (err, foundVolunteer)=>{
         Event.create(req.body, (err, createdEvent)=>{
             foundVolunteer.events.push(createdEvent);

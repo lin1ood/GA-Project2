@@ -21,19 +21,18 @@
 		</header>
 		<main>
 			<form action="/events" method="post">
-				Title:<input type="text" name="title" /><br/>
-				Date:<input type="date" name="date"><br/>
-				Time: <input type="time" name="time"><br/>
+				<label>Title:</label><input type="text" name="title" /><br/>
+				<label>Date:</label><input type="date" name="date"><br/>
+				<label>Time:</label><input type="time" name="time"><br/>
 				<!-- todo: only it this is the Admin -->
 					<% if (volunteers.length > 0) { %>
-						<br/>Volunteers:<br/>
-						<select name="volunteerId">
+						<br/><br/><br/><label>Volunteers:</label><select name="volunteerId">
 	                    <% for(let i = 0; i < volunteers.length; i++) { %>
 	                        <option value="<%=volunteers[i]._id%>"><%=volunteers[i].name%></option>
 	                    <% } %>
 	                </select><br/><br/>
 					<% } %>
-				<input type="submit" value="Publish Event"/>
+				<input class="button-primary submit-button" type="submit" value="Publish Event"/>
 			</form>
 		</main>
 		<% include ../partials/footer.ejs %>

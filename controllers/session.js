@@ -56,7 +56,7 @@ router.post('/registration', (req, res) => {
     req.session.username = user.username;
     req.session.logged   = true;
     req.session.message = '';
-    res.redirect('/volunteers');
+    res.redirect('/events');
   });
 });
 

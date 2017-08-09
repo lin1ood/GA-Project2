@@ -11,9 +11,6 @@
 			<nav>
 				<ul>
 					<li>
-						<a href="/">Home</a>
-					</li>
-					<li>
 						<!-- check for admin user logged only -->
 						<a href="/events/new">Create an Event</a>
 					</li>
@@ -30,6 +27,10 @@
 						<li>
 							<a href="/events/<%=events[i]._id%>"><%=events[i].title%></a>
 						</li>
+						<ul>
+						<!-- todo: add list of volunteers for this task -->
+						<li>Volunteer....</li>
+						</ul>
 					<% } %>
 				<% } %>
 			</ul>

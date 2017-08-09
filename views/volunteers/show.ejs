@@ -34,23 +34,32 @@
 				<% if (volunteer.events.length === 0) { %>
 						<h2>Member has no Event Commitments</h2><br/>
 				<% } else { %>
-					<ol>
+					<table class="u-full-width">
+						<thead>
+							<tr>
+							 	<th>Event Title</th>
+								<th>Date</th>
+								<th>Time</th>
+							</tr>
+						</thead>
+						<tbody>
 						<% for(let i = 0; i < volunteer.events.length; i++) { %>
-							<li><%=volunteer.events[i].title%></li>
-							<ul>
-								<li><%=volunteer.events[i].date.toLocaleDateString()%></li>
-								<li><%=volunteer.events[i].time%></li>
-							</ul>
+							<tr>
+								<td><%=volunteer.events[i].title%></td>
+								<td><%=volunteer.events[i].date.toLocaleDateString()%></td>
+								<td><%=volunteer.events[i].time%></td>
+							</tr>
 						<% } %>
-					</ol>
+						</tbody>
+					</table>
 				<% } %>
 			</section>
 			<section>
-				<a href="/volunteers/<%=volunteer._id%>/edit">Edit Volunteer</a>
+				<a class="center" href="/volunteers/<%=volunteer._id%>/edit">Edit Volunteer</a>
 			</section>
       <section>
 				<form action="/volunteers/<%=volunteer._id%>?_method=DELETE" method="post">
-					<input type="submit" value="Delete Volunteer"/>
+					<input class="button-primary  submit-button" type="submit" value="Delete Volunteer"/>
 				</form>
 			</section>
 		</main>
