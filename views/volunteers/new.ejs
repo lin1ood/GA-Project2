@@ -7,8 +7,8 @@
 	</head>
 	<body>
 		<header>
-			<h1>Create a Voluenteer</h1>
-			<nav>
+			<h2>Create a Volunteer</h2>
+			<div class="row columns">
 				<ul>
 					<li>
 						<a href="/">Home</a>
@@ -17,16 +17,20 @@
 						<a href="/volunteers">Volunteers Index</a>
 					</li>
 				</ul>
-			</nav>
+			</div>
 		</header>
 		<main>
 			<form action="/volunteers" method="post">
-				Name:<input type="text" name="name" /><br/>
-				<!-- todo: add to the ejs post processing -->
-				Cell:<input type="tel" name="cell" /><br/>
-				Email:<input type="email" name="email" /><br/>
-				MemberID:<input type="text" name="memberID" /><br/>
-				<input type="submit" value="Add Volunteer"/>
+				<div>
+					<div>
+						<label>Name:</label><input type="text" name="name" /><br/>
+						<!-- todo: add to the ejs post processing -->
+						<label>Cell:</label><input type="tel" name="cell" /><br/>
+						<label>Email:</label><input type="email" name="email" /><br/>
+						<label>MemberID:</label><input type="text" name="memberID" /><br/>
+						<input class="button-primary submit-button" type="submit" value="Add Volunteer"/><br/>
+					</div>
+				</div>
 			</form>
 		</main>
 		<% include ../partials/footer.ejs %>
