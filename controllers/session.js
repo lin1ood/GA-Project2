@@ -19,11 +19,11 @@ router.post('/login', (req, res, next) => {
                 req.session.message  = '';
                 req.session.username = req.body.username;
                 req.session.logged   = true;
-                console.log(req.session, req.body)
+                // console.log(req.session, req.body)
 
                 res.redirect('/volunteers')
             } else {
-              console.log('else in bcrypt compare')
+              // console.log('else in bcrypt compare')
               req.session.message = 'Username or password are incorrect or not a registered Username.';
               res.redirect('/sessions/login')
 
@@ -52,7 +52,7 @@ router.post('/registration', (req, res) => {
   userDbEntry.password = passWordHash;
 
   User.create(userDbEntry, (err, user) => {
-    console.log(user);
+    // console.log(user);
     req.session.username = user.username;
     req.session.logged   = true;
     req.session.message = '';

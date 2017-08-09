@@ -2,10 +2,21 @@ const express = require('express');
 const router = express.Router();
 const dateFormat = require('dateformat');
 const Event = require('../models/events.js');
-const Volunteer = require('../models/volunteer.js')
+const Volunteer = require('../models/volunteer.js');
+const Nexmo = require('nexmo');
+const YOUR_API_KEY = 'd574ba15';
+const YOUR_API_SECRET = '86aa0dbd1b068549';
+const YOUR_VIRTUAL_NUMBER = '12028525641';
+const nexmo = new Nexmo({
+  apiKey: YOUR_API_KEY,
+  apiSecret: YOUR_API_SECRET
+});
+const from = 'Nexmo';
+const volMessBase = 'Thanks for volunteering to help with ';
 
 router.get('/', (req, res)=>{
 	if (!req.session.logged) {
+		console.log('user not logged');
 		res.redirect('/sessions/login');
 	};
 	Event.find({}, (err, foundEvents)=>{
@@ -41,6 +52,20 @@ router.post('/', (req, res)=>{
             foundVolunteer.save((err, data)=>{
                 res.redirect('/events');
             });
+
+						let cell = foundVolunteer.cell.split('-');
+						cell = cell.join();
+						console.log('cell', cell);
+
+						nexmo.message.sendSms(
+					  from, cell, volMessBase + createdEvent.title + ' ' + createdEvent.time + ' ' + createdEvent.date,
+					    (err, responseData) => {
+					      if (err) {
+					        console.log(err);
+					      } else {
+					        console.dir(responseData);
+					      }
+					    });
         });
     });
 });

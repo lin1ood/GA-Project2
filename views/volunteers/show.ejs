@@ -22,12 +22,24 @@
 		<main>
 			<section>
 				<h2>Volunteer Info:</h2>
-				<ul>
-					<li>Name: <%=volunteer.name%></li>
-					<li>Cell: <%=volunteer.cell%></li>
-					<li>email: <%=volunteer.email%></li>
-					<li>MemberID: <%=volunteer.memberID%></li>
-				</ul>
+				<table class="u-full-width">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Cell</th>
+							<th>Email</th>
+							<th>MemberID</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><%=volunteer.name%></td>
+							<td><%=volunteer.cell%></td>
+							<td><%=volunteer.email%></td>
+							<td><%=volunteer.memberID%></td>
+						</tr>
+					</tbody>
+				</table>
 			</section>
 			<section>
 				<h2>Event Commitments:</h2>
