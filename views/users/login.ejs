@@ -1,13 +1,24 @@
-<h1>User Login</h1>
-<p>You must have previously registered yourself as a User.</p>
-<a href="/sessions/register">Register as a User</a>
-<br>
-<br>
-<br>
-<form action=/sessions/login method="POST"/>
-   Username:<input type="text" name="username" value=""><br/>
-   Password:<input type="password" name="password" value=""><br/>
-   <button>Login</button>
-</form>
-<%=message%>
-<a href="/sessions/register"></a>
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/head.ejs %>
+    <% include ../partials/nav.ejs %>
+    <title></title>
+  </head>
+  <body>
+    <h1>User Login</h1>
+    <p>You must have previously registered yourself as a User.</p>
+    <a href="/sessions/register">Register as a User</a>
+    <br>
+    <br>
+    <br>
+    <form action=/sessions/login method="POST"/>
+       Username:<input type="text" name="username" value=""><br/>
+       Password:<input type="password" name="password" value=""><br/>
+       <button>Login</button>
+    </form>
+    <%=message%>
+    <a href="/sessions/register"></a>
+    <% include ../partials/footer.ejs %>
+  </body>
+</html>

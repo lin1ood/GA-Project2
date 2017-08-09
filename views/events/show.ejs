@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<% include ../partials/head.ejs %>
+    <% include ../partials/nav.ejs %>
 		<title>Events</title>
 	</head>
 	<body>
@@ -35,5 +36,6 @@
 			    <a href="/events/<%=event._id%>/edit">Edit</a>
 			</section>
 		</main>
+		<% include ../partials/footer.ejs %>
 	</body>
 </html>
