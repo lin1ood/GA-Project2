@@ -54,11 +54,13 @@ router.post('/', (req, res)=>{
             });
 
 						let cell = foundVolunteer.cell.split('-');
-						cell = cell.join();
+						cell = '1' + cell.join('');
 						console.log('cell', cell);
+						let message = volMessBase + createdEvent.title + ' ' + createdEvent.time + ' ' + createdEvent.date;
+						console.log('message', message);
 
 						nexmo.message.sendSms(
-					  from, cell, volMessBase + createdEvent.title + ' ' + createdEvent.time + ' ' + createdEvent.date,
+					  YOUR_VIRTUAL_NUMBER, cell, message,
 					    (err, responseData) => {
 					      if (err) {
 					        console.log(err);
