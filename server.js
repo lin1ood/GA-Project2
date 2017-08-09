@@ -7,6 +7,7 @@ const session 				= require('express-session');
 
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(express.static('public'));
 //session middleware
 //req.session param created
 app.use(session({

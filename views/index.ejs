@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
-		<title></title>
+		<% include ./partials/head.ejs %>
+    <% include ./partials/nav.ejs %>
+		<title>Index</title>
 	</head>
 	<body>
 		<header>
 			<h1>Welcome to the Volunteer Sign-up</h1>
-			<nav>
+			<nav class=".nav">
 				<ul>
 					<li>
 						<a href="/volunteers">Volunteers</a>
@@ -24,5 +25,6 @@
 				</ul>
 			</nav>
 		</header>
+		<% include ./partials/footer.ejs %>
 	</body>
 </html>
