@@ -58,11 +58,10 @@ h2  {
   font-size: 2.5em;
 }
 
-/*ul, ol {
-  display: block;
-  color: black;
-  margin: auto;
-}*/
+ul, ol {
+  margin-left: 250px;
+  list-style: none;
+}
 
 /*li {
   text-align: justify;
@@ -128,9 +127,8 @@ p {
 }*/
 
 .submit-button {
-
-  /*align-items: flex-start;
-  flex-wrap: wrap;*/
+  clear: both;
+  margin-left: 300px;
 }
 
 footer {
