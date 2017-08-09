@@ -37,10 +37,11 @@
 					<% for (var j = 0; j < volunteers[i].events.length; j++) { %>
 					<%		console.log(volunteers[i].events.length); %>
 					<%		console.log(volunteers[i].events[j]["title"]); %>
+					<%		console.log(volunteers[i].events[j]["_id"]); %>
 						<td>
 							<a href="/volunteers/<%=volunteers[i]._id%>"><%=volunteers[i].name%></a>
 						</td>
-						<td><%=volunteers[i].events[j]["title"]%></td>
+						<td><a href="/events/<%=volunteers[i].events[j]['_id']%>"</a><%=volunteers[i].events[j]["title"]%></td>
 						<td><%=volunteers[i].events[j]["date"].toLocaleDateString('en-US')%></td>
 						<td><%=volunteers[i].events[j]["time"]%></td>
 						</tr>
