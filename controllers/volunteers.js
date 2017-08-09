@@ -5,8 +5,11 @@ const router = express.Router();
 
 router.get('/', (req, res)=>{
 	Volunteer.find({}, (err, foundVolunteers)=>{
-		res.render('volunteers/index.ejs', {
-			volunteers: foundVolunteers
+		Event.find({}, (err, foundEvents) =>{
+				console.log(foundEvents);		res.render('volunteers/index.ejs', {
+				volunteers: foundVolunteers,
+				events: foundEvents
+			});
 		});
 	})
 });

@@ -14,27 +14,23 @@ const nexmo = new Nexmo({
 const from = 'Nexmo';
 const volMessBase = 'Thanks for volunteering to help with ';
 
-router.get('/', (req, res)=>{
+router.get('/', (req, res) => {
 	if (!req.session.logged) {
 		console.log('user not logged');
 		res.redirect('/sessions/login');
 	};
-	Event.find({}, (err, foundEvents)=>{
+	Event.find({}, (err, foundEvents) => {
 		if (err) {
 			res.send('There are currently no Events');
 		} else {
-			// for ( let i = 0; i < foundEvents.length; i++ ) {
-			// 	find()
-			// }
-
-
-
-
-			res.render('events/index.ejs', {
-				events: foundEvents
-			});
-		}
-	})
+			Volunteer.find({}, (err, foundVolunteers)=>{
+  			res.render('events/index.ejs', {
+				events: foundEvents,
+        volunteers: foundVolunteers
+        });
+  		});
+    }
+  });
 });
 
 router.get('/new', (req, res)=>{
@@ -51,23 +47,22 @@ router.post('/', (req, res)=>{
             foundVolunteer.events.push(createdEvent);
             foundVolunteer.save((err, data)=>{
                 res.redirect('/events');
+								// build and send SMS to the Volunteer
+								let cell = foundVolunteer.cell.split('-');
+								cell = '1' + cell.join('');
+								// console.log('cell', cell);
+								let message = volMessBase + createdEvent.title + ' ' + createdEvent.time + ' ' + createdEvent.date;
+                //using nexmo
+								nexmo.message.sendSms(
+							  YOUR_VIRTUAL_NUMBER, cell, message,
+							    (err, responseData) => {
+							      if (err) {
+							        console.log(err);
+							      } else {
+							        // console.dir(responseData);
+							      }
+							    });
             });
-
-						let cell = foundVolunteer.cell.split('-');
-						cell = '1' + cell.join('');
-						console.log('cell', cell);
-						let message = volMessBase + createdEvent.title + ' ' + createdEvent.time + ' ' + createdEvent.date;
-						console.log('message', message);
-
-						nexmo.message.sendSms(
-					  YOUR_VIRTUAL_NUMBER, cell, message,
-					    (err, responseData) => {
-					      if (err) {
-					        console.log(err);
-					      } else {
-					        console.dir(responseData);
-					      }
-					    });
         });
     });
 });
