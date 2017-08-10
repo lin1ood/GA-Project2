@@ -18,19 +18,20 @@ router.get('/', (req, res) => {
 	if (!req.session.logged) {
 		console.log('user not logged');
 		res.redirect('/sessions/login');
-	};
-	Event.find({}, (err, foundEvents) => {
-		if (err) {
-			res.send('There are currently no Events');
-		} else {
-			Volunteer.find({}, (err, foundVolunteers)=>{
-  			res.render('events/index.ejs', {
-				events: foundEvents,
-        volunteers: foundVolunteers
-        });
-  		});
-    }
-  });
+	} else {
+  	Event.find({}, (err, foundEvents) => {
+  		if (err) {
+  			res.send('There are currently no Events');
+  		} else {
+  			Volunteer.find({}, (err, foundVolunteers)=>{
+    			res.render('events/index.ejs', {
+  				events: foundEvents,
+          volunteers: foundVolunteers
+          });
+    		});
+      }
+    });
+  }
 });
 
 router.get('/new', (req, res)=>{
@@ -106,16 +107,36 @@ router.get('/:id/edit', (req, res)=>{
 router.put('/:id', (req, res)=>{
     Event.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedEvent)=>{
         Volunteer.findOne({ 'events._id' : req.params.id }, (err, foundVolunteer)=>{
-			if(foundVolunteer._id.toString() !== req.body.VolunteerId){
-				foundVolunteer.events.id(req.params.id).remove();
-				foundVolunteer.save((err, savedFoundVolunteer)=>{
-					Volunteer.findById(req.body.VolunteerId, (err, newVolunteer)=>{
-						newVolunteer.events.push(updatedEvent);
-						newVolunteer.save((err, savedNewVolunteer)=>{
-			                res.redirect('/events/'+req.params.id);
-			            });
-					});
-	            });
+
+console.log('foundVolunteer._id.toString()',foundVolunteer._id.toString());
+console.log('req.body.volunteerId', req.body.volunteerId);
+
+			if(foundVolunteer._id.toString() !== req.body.volunteerId){
+
+console.log('User change');
+// Event.findById(req.params.id, (err, foundEvent)=>{
+//   Volunteer.find({}, (err, allVolunteers)=>{
+//     Volunteer.findOne({'events._id':req.params.id}, (err, foundEventVolunteer)=>{
+//       res.render('events/edit.ejs', {
+//         event: foundEvent,
+//         volunteers: allVolunteers,
+//         eventVolunteer: foundEventVolunteer
+//       });
+    // });
+				foundVolunteer.events.id.findById(req.params.id, (err, foundEvent) => {
+          //remove only the event that changed!!!!
+  				foundVolunteer.save((err, savedFoundVolunteer)=>{
+
+          console.log('savedFoundVolunteer', savedFoundVolunteer);
+
+    					Volunteer.findById(req.body.VolunteerId, (err, newVolunteer)=>{
+    						newVolunteer.events.push(updatedEvent);
+    						newVolunteer.save((err, savedNewVolunteer)=>{
+	                res.redirect('/events/'+req.params.id);
+		            });
+    					});
+            });
+        });
 			} else {
 				foundVolunteer.events.id(req.params.id).remove();
 	            foundVolunteer.events.push(updatedEvent);

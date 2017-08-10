@@ -17,7 +17,7 @@
 			</nav>
 		</header>
 		<main>
-			<h2>List of Volunteers and Events</h2>
+			<h2>List of Volunteers</h2>
 			<ul>
 				<% if (volunteers.length === 0) { %>
 					<h3>No Registered Volunteers.</h3>
@@ -26,29 +26,25 @@
 					<thead>
 						<tr>
 							<th>Volunteer</th>
-							<th>Event Title</th>
-							<th>Date</th>
-							<th>Time</th>
+							<th>Cell</th>
+							<th>Email</th>
+<!--							<th>MemberID</th>  -->
 						</tr>
 					</thead>
 					<tbody>
-				<% for(let i = 0; i < volunteers.length; i++){ %>
-					<tr>
-				<% for (var j = 0; j < volunteers[i].events.length; j++) { %>
-				<%		console.log(volunteers[i].events.length); %>
-				<%		console.log(volunteers[i].events[j]["title"]); %>
-					<td>
-						<a href="/volunteers/<%=volunteers[i]._id%>"><%=volunteers[i].name%></a>
-					</td>
-					<td><a href="/events/<%=volunteers[i].events[j]['_id']%>"</a><%=volunteers[i].events[j]["title"]%></td>
-					<td><%=volunteers[i].events[j]["date"].toLocaleDateString('en-US')%></td>
-					<td><%=volunteers[i].events[j]["time"]%></td>
-					</tr>
-				<%	} %>
+					<% for(let i = 0; i < volunteers.length; i++){ %>
+								<tr>
+									<td>
+										<a href="/volunteers/<%=volunteers[i]._id%>"><%=volunteers[i].name%></a>
+										</td>
+										<td><%=volunteers[i].cell%></td>
+										<td><%=volunteers[i].email%></td>
+<!--					          <td><%=volunteers[i].memberID%></td>  -->
+									</tr>
+								<% } %>
+					</tbody>
+				</table>
 				<% } %>
-				</tbody>
-			</table>
-		<% } %>
 		</main>
 		<% include ../partials/footer.ejs %>
 	</body>

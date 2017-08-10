@@ -23,20 +23,19 @@
 		<main>
 			<h2>Article Attributes:</h2>
 			<form action="/events/<%=event._id%>?_method=PUT" method="post">
-				<label>Volunteer:</label><select name="volunteerId">
-                    <% for(let i = 0; i < volunteers.length; i++) { %>
-                        <option
-							value="<%=volunteers[i]._id%>"
-							<% if(volunteers[i]._id.toString() === eventVolunteer._id.toString()){ %>
-								selected
-							<% } %>
-							>
-							<%=volunteers[i].name%>
-						</option>
-                    <% } %>
-                </select><br/>
-				<label>Date:</label><input type="date" name="date" value="<%=event.date%>"><br/>
-				<label>Time:</label><input type="time" name="time" value="<%event.time%>"><br/>
+				<label>Volunteer:</label>
+					<select name="volunteerId">
+        	<% for(let i = 0; i < volunteers.length; i++) { %>
+              	<option value="<%=volunteers[i]._id%>"
+								<% if(volunteers[i]._id.toString() === eventVolunteer._id.toString()){ %>
+											selected
+								<% } %>>
+								<%=volunteers[i].name%>
+								</option>
+					<% } %>
+          </select><br/>
+				<label>Date:</label><input type="date" name="date" value="<%=event.date.toISOString('en-US').substring(0, 10)%>"><br/>
+				<label>Time:</label><input type="time" name="time" value="<%event.time.toString()%>"><br/>
 				<input class="button-primary submit-button" type="submit" value="Update Event"/>
 				</form>
 		</main>

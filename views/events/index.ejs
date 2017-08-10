@@ -11,46 +11,53 @@
 			<nav>
 				<ul>
 					<li>
-						<!-- check for admin user logged only -->
-						<a href="/events/new">Create an Event</a>
+						<a href="/events/new">Create and Assign Events</a>
 					</li>
 				</ul>
 			</nav>
 		</header>
 		<main>
-			<h2>Events with Volunteers</h2>
-				<% if (events.length === 0) { %>
-					<h3>There are no events</h3>
-				<% } else { %>
-					<table class='u-full-width'>
-						<thead>
-							<tr>
-								<th>Volunteer</th>
-								<th>Event Title</th>
-								<th>Date</th>
-								<th>Time</th>
-							</tr>
-						</thead>
-						<tbody>
-					<% for(let i = 0; i < volunteers.length; i++){ %>
-						<tr>
-					<% for (var j = 0; j < volunteers[i].events.length; j++) { %>
-					<%		console.log(volunteers[i].events.length); %>
-					<%		console.log(volunteers[i].events[j]["title"]); %>
-					<%		console.log(volunteers[i].events[j]["_id"]); %>
-						<td>
-							<a href="/volunteers/<%=volunteers[i]._id%>"><%=volunteers[i].name%></a>
-						</td>
-						<td><a href="/events/<%=volunteers[i].events[j]['_id']%>"</a><%=volunteers[i].events[j]["title"]%></td>
-						<td><%=volunteers[i].events[j]["date"].toLocaleDateString('en-US')%></td>
-						<td><%=volunteers[i].events[j]["time"]%></td>
-						</tr>
-					<%	} %>
+			<% let assignedEvents = 0; %>
+			<% if (events.length === 0) { 																	%>
+						<h3>There are no events. <a href="/events/new">Create an Event</a></h3>
+			<%		} else { 																									%>
+			<%    for(let i = 0; i < volunteers.length; i++){               %>
+		  <%       for (var j = 0; j < volunteers[i].events.length; j++) {  %>
+			<%			    if (volunteers[i].events[j]['_id']) {								%>
+			<%						 assignedEvents++;																%>
+			<%					}																										%>
+			<%		 	  }																											%>
+			<%	  	}																												%>
+			<%		}																													%>
+			<%    if (assignedEvents === 0) {																%>
+							<h2>There are <%=volunteers.length%> Volunteers with no assigned events.</h2>
+			<%		} else {																									%>
+							<h2>Events with Volunteers</h2>
+							<table class='u-full-width'>
+								<thead>
+									<tr>
+										<th>Volunteer</th>
+										<th>Event Title</th>
+										<th>Date</th>
+										<th>Time</th>
+									</tr>
+								</thead>
+								<tbody>
+							<% for(let i = 0; i < volunteers.length; i++) { 					%>
+								<tr>
+							<% for (var j = 0; j < volunteers[i].events.length; j++) { %>
+								<td>
+									<a href="/volunteers/<%=volunteers[i]._id%>"><%=volunteers[i].name%></a>
+								</td>
+								<td><a href="/events/<%=volunteers[i].events[j]['_id']%>"</a><%=volunteers[i].events[j]["title"]%></td>
+								<td><%=volunteers[i].events[j]["date"].toLocaleDateString('en-US')%></td>
+								<td><%=volunteers[i].events[j]["time"]%></td>
+								</tr>
+							<%	} %>
+							<% } %>
+							</tbody>
+						</table>
 					<% } %>
-					</tbody>
-				</table>
-				<% } %>
-			</ul>
 		</main>
 		<% include ../partials/footer.ejs %>
 	</body>
