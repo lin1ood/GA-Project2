@@ -8,29 +8,34 @@
 	<body>
 		<header>
 			<h2><%=event.title%></h2>
-			<ul>
-				<li>Date: <%=event.date.toLocaleDateString()%></li>
-				<li>Time: <%=event.time%></li>
-			</ul>
-			<small>Volunteer:<a href="/volunteers/<%=event._id%>"><%=volunteer.name%></a></small>
-			<nav>
-				<ul>
-					<li>
-						<a class="center" href="/events">Events Index</a>
-					</li>
-				</ul>
-			</nav>
+			<table class="u-full-width">
+				<thead>
+					<tr>
+						<th>Volunteer</th>
+						<th>Date</th>
+						<th>Time</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><a href="/volunteers/<%=event._id%>"><%=volunteer.name%></a></td>
+						<td><%=event.date.toISOString('en-US').substring(0, 10)%></td>
+						<td><%=event.time%></td>
+					</tr>
+				</tbody>
+			</table>
 		</header>
 		<main>
-			<section>
-			</section>
-			<section>
-			    <form action="/events/<%=event._id%>?_method=DELETE" method="post">
-			        <input class="button-primary  submit-button" type="submit" value="Delete Event"/>
-			    </form>
-			</section>
-			<section>
-			    <br/><br/><a class="center" href="/events/<%=event._id%>/edit">Edit this Event</a><br/>
+			<section class="bottom-button container">
+				<form action="/events/<%=event._id%>/edit" method="GET">
+						<input class="eleven columns button-primary  submit-button" type="submit" value="Edit Event"/>
+				</form>
+				<form action="/events/<%=event._id%>?_method=DELETE" method="post">
+		        <input class="eleven columns button-primary  submit-button" type="submit" value="Delete Event"/>
+		    </form>
+				<form action="/events" method="GET">
+		        <input class="eleven columns button-primary  submit-button" type="submit" value="Events"/>
+		    </form>
 			</section>
 		</main>
 		<% include ../partials/footer.ejs %>

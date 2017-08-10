@@ -8,12 +8,8 @@
 	<body>
 		<header>
 			<h2>Edit Event</h2>
-			<h3><%=eventVolunteer.name%> <u>'<%=event.title%>'</u> Event</h3>
 			<nav>
 				<ul>
-					<li>
-						<a href="/">Home</a>
-					</li>
 					<li>
 						<a href="/events">Events Index</a>
 					</li>
@@ -21,7 +17,7 @@
 			</nav>
 		</header>
 		<main>
-			<h2>Article Attributes:</h2>
+			<h2><%=event.title%> Event</h2><br/><br/>
 			<form action="/events/<%=event._id%>?_method=PUT" method="post">
 				<label>Volunteer:</label>
 					<select name="volunteerId">

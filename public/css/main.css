@@ -34,6 +34,15 @@ h1:hover {
 text-shadow: 1px 1px 2px #F5B8D9;
 }
 
+.bottom-buttons {
+  text-align: center;
+}
+
+.bottom-buttons:hover {
+text-shadow: 1px 1px 2px #F5B8D9;
+}
+
+
 .nav {
   background-color: #212525;
   width: 100%;

@@ -63,12 +63,12 @@
 					</table>
 				<% } %>
 			</section>
-			<section>
-				<a class="center" href="/volunteers/<%=volunteer._id%>/edit">Edit Volunteer</a>
-			</section>
-      <section>
+			<section class="bottom-button container">
+				<form action="/volunteers/<%=volunteer._id%>/edit" method="GET">
+					<input class="eleven columns button-primary  submit-button" type="submit" value="Edit Volunteer"/>
+				</form>
 				<form action="/volunteers/<%=volunteer._id%>?_method=DELETE" method="post">
-					<input class="button-primary  submit-button" type="submit" value="Delete Volunteer"/>
+					<input class="eleven columns button-primary  submit-button" type="submit" value="Delete Volunteer"/>
 				</form>
 			</section>
 		</main>
