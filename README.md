@@ -41,14 +41,13 @@ https://hogvol.herokuapp.com/
 # Work Items for expansion of existing functions.
 * Improve CSS overall.
 * Pagination for Volunteer and Event pages anticipating future larger volumes.
-* For n Volunteers required -- Monitor and Handle Event Scheduling conflicts (Time and Volunteer).
-* Schedule 24Hrs prior sending email reminder to committed Volunteers for their assigned Event.
+* Events with n Volunteers required -- Monitor and Handle Event Scheduling conflicts (Time and Volunteer).
+* Send email reminder to committed Volunteers for their assigned Event 24Hrs prior to their assigned Event(s).
 * Add img to Volunteer Schema and all CRUD pages.
 * Populate Event Time for the Edit Page.
-* Username rules.
-* Username recovery.
-* Password rules.
-* Password recovery/reset.
-* Add MSR functionality for Volunteer Create MemberID capture.
 * Add Delete user/session operation
-* Restrict some functions to Admin user only
+* Username rules & recovery.
+* Username rules & recovery.
+* Password rules/recovery/reset (unique usernames enforced today).
+* Add Magnetic Stripe Reader (MSR) functionality for Volunteer Create MemberID capture.
+* Restrict some functions to Admin User only
