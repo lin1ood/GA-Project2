@@ -47,7 +47,6 @@ https://hogvol.herokuapp.com/
 * Populate Event Time for the Edit Page.
 * Add Delete user/session operation
 * Username rules & recovery.
-* Username rules & recovery.
-* Password rules/recovery/reset (unique usernames enforced today).
+* Password rules & recovery & reset (unique usernames enforced today).
 * Add Magnetic Stripe Reader (MSR) functionality for Volunteer Create MemberID capture.
 * Restrict some functions to Admin User only
