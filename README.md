@@ -51,3 +51,4 @@ https://hogvol.herokuapp.com/
 * Password recovery/reset.
 * Add MSR functionality for Volunteer Create MemberID capture.
 * Add Delete user/session operation
+* Restrict some functions to Admin user only
