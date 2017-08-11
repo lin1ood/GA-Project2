@@ -8,6 +8,13 @@
 	<body>
 		<header>
 			<h2><%=event.title%></h2>
+			<nav>
+				<ul>
+					<li>
+						<a href="/events">Event Index</a>
+					</li>
+				</ul>
+			</nav>
 			<table class="u-full-width">
 				<thead>
 					<tr>
@@ -32,9 +39,6 @@
 				</form>
 				<form action="/events/<%=event._id%>?_method=DELETE" method="post">
 		        <input class="eleven columns button-primary  submit-button" type="submit" value="Delete Event"/>
-		    </form>
-				<form action="/events" method="GET">
-		        <input class="eleven columns button-primary  submit-button" type="submit" value="Events"/>
 		    </form>
 			</section>
 		</main>

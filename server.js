@@ -17,10 +17,10 @@ app.use(session({
 	saveUninitialized: false
 }));
 
-const authorsController = require('./controllers/volunteers.js');
-app.use('/volunteers', authorsController);
-const articlesController = require('./controllers/events.js');
-app.use('/events', articlesController);
+const volunteersController = require('./controllers/volunteers.js');
+app.use('/volunteers', volunteersController);
+const eventsController = require('./controllers/events.js');
+app.use('/events', eventsController);
 const sessionsController = require('./controllers/session.js');
 app.use('/sessions', sessionsController);
 
