@@ -8,8 +8,8 @@ https://hogvol.herokuapp.com/
 1. Create a Full-Stack Application adhering to MVC file structure.
 
 ### User Stories
-1. Allow CRUD operations for Volunteers.
-2. Allow CRUD operations for Events.
+1. CRUD operations for Volunteers.
+2. CRUD operations for Events.
 3. Allow CRUD operations for Users.
 4. Alert Volunteers when they are assigned an Event.
 5. Styling with CSS, Skeleton, Bootstrap
