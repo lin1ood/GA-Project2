@@ -1,4 +1,4 @@
-# GA Project 2 - Volunteer Event Scheduler &amp; Tracker.
+# GA Project 2 - Volunteer Event Scheduler.
 A solution for Volunteers to commit themselves to Events.  Volunteer (member) management and Event management are stored in mongo and managed via CRUD controllers and EJS pages. SMS is also incorporated upon Event assignment to a Volunteer.
 
 ## Heroku hosted link to this Project
