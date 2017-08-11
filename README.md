@@ -10,7 +10,7 @@ https://hogvol.herokuapp.com/
 ### User Stories
 1. CRUD operations for Volunteers.
 2. CRUD operations for Events.
-3. Allow CRUD operations for Users.
+3. CRUD operations for Users.
 4. Alert Volunteers when they are assigned an Event.
 5. Styling with CSS, Skeleton, Bootstrap
 6. Compile a list of additional enhancements for expansion of this applicaiton.
