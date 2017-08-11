@@ -44,7 +44,7 @@ https://hogvol.herokuapp.com/
 * For n Volunteers required -- Monitor and Handle Event Scheduling conflicts (Time and Volunteer).
 * Schedule 24Hrs prior sending email reminder to committed Volunteers for their assigned Event.
 * Add img to Volunteer Schema and all CRUD pages.
-* Populate Event Time for the Edit Page (have date(+1 for some reason) but not Time)
+* Populate Event Time for the Edit Page.
 * Username rules.
 * Username recovery.
 * Password rules.
