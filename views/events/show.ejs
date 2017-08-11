@@ -19,7 +19,7 @@
 				<tbody>
 					<tr>
 						<td><a href="/volunteers/<%=event._id%>"><%=volunteer.name%></a></td>
-						<td><%=event.date.toISOString('en-US').substring(0, 10)%></td>
+						<td><%=event.date.toLocaleDateString('en-US')%></td>
 						<td><%=event.time%></td>
 					</tr>
 				</tbody>
